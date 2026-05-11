@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Ren Solar Remote Controller</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --obsidian:  #0D0D14;
+    --navy:      #1C1C2E;
+    --panel:     #12121F;
+    --cyan:      #00E5FF;
+    --amber:     #FFB300;
+    --gold:      #FFD740;
+    --muted:     #4A5A7A;
+    --text:      #C8D6E8;
+    --text-dim:  #6A7A9A;
+    --border:    rgba(0,229,255,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--obsidian);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Background grid ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Header ── */
+  header {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, #060C14 0%, var(--navy) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 40px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  }
+
+  .app-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #0D1F2D, #1C2A3A);
+    border: 1px solid rgba(0,229,255,0.25);
+    font-size: 36px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 32px rgba(0,229,255,0.15);
+  }
+
+  .app-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: clamp(20px, 5vw, 28px);
+    color: var(--cyan);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .app-sub {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  .badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 14px;
+    border: 1px solid rgba(255,179,0,0.3);
+    border-radius: 20px;
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* ── Main ── */
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* ── Effective date bar ── */
+  .effective-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,229,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-bottom: 36px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .effective-bar span { color: var(--cyan); font-weight: 600; }
+
+  /* ── Section ── */
+  .section {
+    margin-bottom: 32px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .section:hover { border-color: rgba(0,229,255,0.22); }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(0,229,255,0.03);
+  }
+
+  .section-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: var(--cyan);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .section-body {
+    padding: 20px 22px;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  .section-body p + p { margin-top: 12px; }
+
+  /* ── Info rows ── */
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+
+  .info-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  /* ── Contact card ── */
+  .contact-card {
+    background: linear-gradient(135deg, rgba(0,229,255,0.06), rgba(255,179,0,0.04));
+    border: 1px solid rgba(0,229,255,0.18);
+    border-radius: 12px;
+    padding: 22px;
+    margin-top: 8px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+
+  .contact-label {
+    color: var(--text-dim);
+    min-width: 90px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+  }
+
+  .contact-value {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .contact-value a {
+    color: var(--cyan);
+    text-decoration: none;
+  }
+
+  .contact-value a:hover { text-decoration: underline; }
+
+  /* ── Highlight box ── */
+  .highlight {
+    background: rgba(255,179,0,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #D4A020;
+    line-height: 1.7;
+  }
+
+  /* ── Footer ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 32px 20px;
+    border-top: 1px solid var(--border);
+    background: linear-gradient(0deg, #060C14, transparent);
+  }
+
+  .footer-brand {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 15px;
+    color: var(--amber);
+    margin-bottom: 6px;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  /* ── Glow line ── */
+  .glow-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    margin: 32px 0;
+    opacity: 0.4;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 480px) {
+    .section-header { padding: 14px 16px; }
+    .section-body   { padding: 16px;      }
+    .contact-label  { min-width: 70px;    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="app-icon">☀</div>
+  <div class="app-name">Ren Solar Remote Controller</div>
+  <div class="app-sub">by DevZero — package: com.rensolar.controller</div>
+  <div class="badge">Privacy Policy</div>
+</header>
+
+<main>
+
+  <div class="effective-bar">
+    📅 Effective date: <span>May 10, 2026</span>
+    &nbsp;·&nbsp; Last updated: <span>May 10, 2026</span>
+  </div>
+
+  <!-- Overview -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔒</span>
+      <span class="section-title">Overview</span>
+    </div>
+    <div class="section-body">
+      <p>
+        Ren Solar Remote Controller ("the App") is developed and maintained solely
+        by DevZero (Ren). This Privacy Policy explains what information the App
+        accesses, how it is used, and what is never collected or shared.
+      </p>
+      <div class="highlight">
+        This App does not collect, store, or transmit any personally identifiable
+        information from your device to any server operated by the developer.
+      </div>
+    </div>
+  </div>
+
+  <!-- Data We Do Not Collect -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">✅</span>
+      <span class="section-title">Data We Do Not Collect</span>
+    </div>
+    <div class="section-body">
+      <p>The developer does not collect, store, or have access to any of the following:</p>
+      <div style="margin-top: 12px;">
+        <div class="info-row"><div class="info-dot"></div><div>Your name, email address, or any personal identifiers</div></div>
+        <div class="info-row"><div class="info-dot"></div><div>Your device's location or GPS data</div></div>
+        <div class="info-row"><div class="info-dot"></div><div>Your contacts, call logs, or messages</div></div>
+        <div class="info-row"><div class="info-dot"></div><div>Photos, files, or camera access</div></div>
+        <div class="info-row"><div class="info-dot"></div><div>Microphone or audio data</div></div>
+        <div class="info-row"><div class="info-dot"></div><div>Any analytics or behavioral tracking data</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IR Signal & Local Data -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📡</span>
+      <span class="section-title">IR Signals and Local Storage</span>
+    </div>
+    <div class="section-body">
+      <p>
+        All IR commands (ON, OFF, Blink, Stop) are transmitted locally from your
+        device's built-in IR blaster directly to your solar light. No IR signal
+        data is logged, stored externally, or sent to any server.
+      </p>
+      <p>
+        Your usage counts (ON uses, Blink uses, total remaining) are stored
+        locally on your device using Android's SharedPreferences system. This
+        data never leaves your device and is only used to track your in-app
+        usage balance.
+      </p>
+    </div>
+  </div>
+
+  <!-- Advertising -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📺</span>
+      <span class="section-title">Advertising (Google AdMob)</span>
+    </div>
+    <div class="section-body">
+      <p>
+        This App uses <strong style="color: var(--text);">Google AdMob</strong> to display
+        banner advertisements and optional rewarded video ads. AdMob is a
+        third-party advertising service operated by Google LLC.
+      </p>
+      <p>
+        AdMob may collect and use data from your device — including advertising
+        identifiers, device information, and general usage data — to serve
+        relevant advertisements. This data is collected and processed by Google,
+        not by the developer.
+      </p>
+      <div class="highlight">
+        To learn more about how Google uses data from apps that use AdMob,
+        visit: <a href="https://policies.google.com/privacy" target="_blank"
+        style="color: var(--amber);">policies.google.com/privacy</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Internet Access -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🌐</span>
+      <span class="section-title">Internet Access</span>
+    </div>
+    <div class="section-body">
+      <p>
+        The App requires internet access for two purposes only:
+      </p>
+      <div style="margin-top: 12px;">
+        <div class="info-row">
+          <div class="info-dot"></div>
+          <div><strong style="color: var(--text);">AdMob ads</strong> — to load and display banner and rewarded video advertisements.</div>
+        </div>
+        <div class="info-row">
+          <div class="info-dot"></div>
+          <div><strong style="color: var(--text);">Version check</strong> — the App fetches a small JSON file from the developer's public GitHub repository to check if a newer version is available. This request contains no personal data and no user identifiers.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Permissions -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚙</span>
+      <span class="section-title">App Permissions</span>
+    </div>
+    <div class="section-body">
+      <div class="info-row">
+        <div class="info-dot"></div>
+        <div><strong style="color: var(--cyan);">TRANSMIT_IR</strong> — required to send IR commands to your solar light via the device's IR blaster.</div>
+      </div>
+      <div class="info-row">
+        <div class="info-dot"></div>
+        <div><strong style="color: var(--cyan);">INTERNET</strong> — required for AdMob ads and the version check.</div>
+      </div>
+      <div class="info-row">
+        <div class="info-dot"></div>
+        <div><strong style="color: var(--cyan);">ACCESS_NETWORK_STATE</strong> — required by AdMob to check network connectivity before loading ads.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Children -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">👶</span>
+      <span class="section-title">Children's Privacy</span>
+    </div>
+    <div class="section-body">
+      <p>
+        This App is not directed at children under the age of 13. The developer
+        does not knowingly collect any personal information from children. If you
+        believe a child has provided personal information through this App, please
+        contact the developer immediately so it can be removed.
+      </p>
+    </div>
+  </div>
+
+  <!-- Changes -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">📝</span>
+      <span class="section-title">Changes to This Policy</span>
+    </div>
+    <div class="section-body">
+      <p>
+        This Privacy Policy may be updated from time to time. Any changes will
+        be reflected on this page with an updated effective date. Continued use
+        of the App after changes are posted constitutes acceptance of the
+        updated policy.
+      </p>
+    </div>
+  </div>
+
+  <div class="glow-line"></div>
+
+  <!-- Contact -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">✉</span>
+      <span class="section-title">Contact the Developer</span>
+    </div>
+    <div class="section-body">
+      <p>If you have any questions about this Privacy Policy, contact me directly:</p>
+      <div class="contact-card" style="margin-top: 16px;">
+        <div class="contact-row">
+          <span class="contact-label">Developer</span>
+          <span class="contact-value">DevZero (Ren)</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">App</span>
+          <span class="contact-value">Ren Solar Remote Controller</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Package</span>
+          <span class="contact-value" style="font-family: 'Share Tech Mono', monospace; font-size: 13px;">com.rensolar.controller</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">
+            <a href="mailto:support@rensolar.com">support@rensolar.com</a>
+          </span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">
+            <a href="https://github.com/devzero112024/ren-solar-controller" target="_blank">
+              devzero112024/ren-solar-controller
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-brand">DevZero</div>
+  <div class="footer-copy">© 2026 DevZero. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
